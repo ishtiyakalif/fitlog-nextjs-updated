@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import { Clock3, Flame, Star, ArrowUpRight } from 'lucide-react';
+import { formatName } from '@/lib/format';
+export default function WorkoutCard({workout}){return <Link href={`/workouts/${workout.id}`} className="workout-card"><div className="card-image"><img src={workout.image} alt={workout.name} loading="lazy"/><span className="card-open"><ArrowUpRight size={17}/></span></div><div className="card-body"><div className="tag-row">{workout.categories.slice(0,3).map(c=><span className="tag" key={c}>{c}</span>)}</div><h3>{formatName(workout.name)}</h3><p className="equipment">{workout.equipment}</p><div className="stats-row"><span><Clock3/>{workout.duration} min</span><span><Flame/>{workout.calories} kcal</span><span><Star/>{workout.rating}</span></div></div></Link>}
